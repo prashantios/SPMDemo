@@ -11,7 +11,7 @@ import SwiftyJSON
 import CommonCrypto
 import OpenSSL
 
-class Encrypt {
+public class Encrypt {
     var encryptionKeys :  EncryptionKeys?
     var algo : Algo.AES_GCM?
     var encryptor : OpaquePointer? // = UnsafeMutablePointer<EVP_CIPHER_CTX>?
@@ -23,7 +23,7 @@ class Encrypt {
     var encryption_ready = true
     var baseURL : String = ""
     
-    init?(cred: CredentialsInfo, uses: Int) {
+     init?(cred: CredentialsInfo, uses: Int) {
         if !validateCredentials(credentials: cred) {
             fatalError(ValidationError.invalidCredentials.rawValue)
         }
