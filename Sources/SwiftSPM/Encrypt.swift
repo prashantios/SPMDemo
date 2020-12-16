@@ -23,7 +23,7 @@ public class Encrypt {
     var encryption_ready = true
     var baseURL : String = ""
     
-     init?(cred: CredentialsInfo, uses: Int) {
+     public init?(cred: CredentialsInfo, uses: Int) {
         if !validateCredentials(credentials: cred) {
             fatalError(ValidationError.invalidCredentials.rawValue)
         }
