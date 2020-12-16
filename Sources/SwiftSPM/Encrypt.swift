@@ -85,7 +85,7 @@ public class Encrypt {
     }
     
     // Begin the encryption process
-    func begin() -> Data? {
+    public func begin() -> Data? {
         // When this function is called, the encryption object increments
         // the number of uses of the key and creates a new internal context
         // to be used to encrypt the data.
@@ -120,7 +120,7 @@ public class Encrypt {
         self.encryption_started = true
         return  dataStruct + encAlgo.1 + (self.encryptionKeys?.encrypted)!
     }
-    func update(data: Data) -> Data? {
+    public func update(data: Data) -> Data? {
         if !self.encryption_started {
             fatalError(ValidationError.encryptionNotStarted.rawValue)
         }
@@ -134,7 +134,7 @@ public class Encrypt {
         let dataBuffer = Data(bytes: outbuf, count: data.count)
         return dataBuffer
     }
-    func end() -> Data {
+    public func end() -> Data {
         if !self.encryption_started {
             fatalError(ValidationError.encryptionNotStarted.rawValue)
         }
@@ -149,7 +149,7 @@ public class Encrypt {
         let tagData = Data(bytes: tagBuffer, count: 16)
         return tagData
     }
-    func close() {
+    public func close() {
         if self.encryption_started {
             fatalError("Encryption currently running")
         }
