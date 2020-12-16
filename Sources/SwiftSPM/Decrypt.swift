@@ -11,7 +11,7 @@ import SwiftyJSON
 import CommonCrypto
 import OpenSSL
 
-class Decrypt {
+public class Decrypt {
     var encryptionKeys :  EncryptionKeys?
     var algo : Algo.AES_GCM?
     var decryptor : OpaquePointer?
@@ -24,7 +24,7 @@ class Decrypt {
     var decryption_ready = true
     var encData = Data()
     
-    init?(cred: CredentialsInfo, uses: Int) {
+    public init?(cred: CredentialsInfo, uses: Int) {
         if !validateCredentials(credentials: cred) {
             fatalError(ValidationError.invalidCredentials.rawValue)
         }
@@ -41,7 +41,7 @@ class Decrypt {
         self.decryption_ready = true
         self.decryption_started = false
     }
-    func begin() -> Data {
+    public func begin() -> Data {
         // Begin the decryption process
         if !self.decryption_ready {
             fatalError(ValidationError.decryptionNotReady.rawValue)
@@ -52,7 +52,7 @@ class Decrypt {
         self.decryption_started = true
         return self.encData
     }
-    func update(encData: Data) -> Data? {
+    public func update(encData: Data) -> Data? {
         // Append the incoming data in the internal data buffer
         self.encData = self.encData + encData
         if !self.decryption_started {
@@ -153,7 +153,7 @@ class Decrypt {
         }
         return nil
     }
-    func end() -> Data? {
+    public func end() -> Data? {
         if !self.decryption_started {
             fatalError(ValidationError.decryptionNotStarted.rawValue)
         }
@@ -173,7 +173,7 @@ class Decrypt {
         self.encData.removeAll()
         return self.encData
     }
-    func close() {
+    public func close() {
         if self.decryption_started {
             fatalError("Decryption currently running")
         }
@@ -229,8 +229,9 @@ class Decrypt {
         return Data(bytes: bytes, count: count)
     }
 }
-class Decryption {
-    func decrypt(creds: CredentialsInfo, data: Data) -> Data? {
+public class Decryption {
+    public init() {}
+    public func decrypt(creds: CredentialsInfo, data: Data) -> Data? {
         let dec = Decrypt.init(cred: creds, uses: 1)
         do {
             guard let begin = dec?.begin() else {
