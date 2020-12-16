@@ -23,7 +23,7 @@ public class CredentialsInfo {
 }
 
 public class ConfigCredentials {
-    public init() {}
+    public init() {} 
     public func loadConfigFile(fileName: String, profile: String) -> CredentialsInfo? {
         if let path = Bundle.main.path(forResource: fileName, ofType: "txt")
         {
