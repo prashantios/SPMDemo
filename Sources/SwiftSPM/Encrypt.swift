@@ -203,7 +203,8 @@ class Encrypt {
         return Data(bytes: bytes, count: count)
     }
 }
-class Encryption {
+public class Encryption {
+    public init() {} 
     func encrypt(creds: CredentialsInfo, data: Data) -> Data? {
         let enc = Encrypt.init(cred: creds, uses: 5)
         do {
