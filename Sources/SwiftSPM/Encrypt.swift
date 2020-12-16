@@ -204,8 +204,8 @@ class Encrypt {
     }
 }
 public class Encryption {
-    public init() {} 
-    func encrypt(creds: CredentialsInfo, data: Data) -> Data? {
+    public init() {}
+    public func encrypt(creds: CredentialsInfo, data: Data) -> Data? {
         let enc = Encrypt.init(cred: creds, uses: 5)
         do {
             guard let begin = enc?.begin() else {
