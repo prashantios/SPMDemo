@@ -9,7 +9,7 @@
 import Foundation
 import INIParser
 
-class CredentialsInfo {
+public class CredentialsInfo {
     var access_key_id = ""
     var secret_signing_key = ""
     var secret_crypto_access_key = ""
@@ -22,8 +22,8 @@ class CredentialsInfo {
     }
 }
 
-public class ConfigCredentials {
-    public func loadConfigFile(fileName: String, profile: String) -> CredentialsInfo? {
+open class ConfigCredentials {
+    open func loadConfigFile(fileName: String, profile: String) -> CredentialsInfo? {
         if let path = Bundle.main.path(forResource: fileName, ofType: "txt")
         {
             do {
