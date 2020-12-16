@@ -22,8 +22,8 @@ class CredentialsInfo {
     }
 }
 
-class ConfigCredentials {
-    func loadConfigFile(fileName: String, profile: String) -> CredentialsInfo? {
+public class ConfigCredentials {
+    public func loadConfigFile(fileName: String, profile: String) -> CredentialsInfo? {
         if let path = Bundle.main.path(forResource: fileName, ofType: "txt")
         {
             do {
