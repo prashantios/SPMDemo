@@ -28,12 +28,16 @@ public class ConfigCredentials {
         
         var path = ""
         #if os(iOS) || os(watchOS) || os(tvOS)
-        path = Bundle.main.path(forResource: fileName, ofType: "txt")
+        if let bundlePath = Bundle.main.path(forResource: fileName, ofType: "txt"){
+            path = bundlePath
+        }
         #elseif os(OSX)
         let currentDirectoryURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
         let bundleURL = URL(fileURLWithPath: "CredBundle.bundle", relativeTo: currentDirectoryURL)
         let bundle = Bundle(url: bundleURL)
-        path = bundle?.path(forResource: fileName, ofType: "txt")
+        if let credPath = bundle?.path(forResource: fileName, ofType: "txt"){
+            path = credPath
+        }
         #else
              println("OMG, it's that mythical new Apple product!!!")
         #endif
