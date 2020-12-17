@@ -25,7 +25,20 @@ public class CredentialsInfo {
 public class ConfigCredentials {
     public init() {} 
     public func loadConfigFile(fileName: String, profile: String) -> CredentialsInfo? {
-        if let path = Bundle.main.path(forResource: fileName, ofType: "txt")
+        
+        var path = ""
+        #if os(iOS) || os(watchOS) || os(tvOS)
+        path = Bundle.main.path(forResource: fileName, ofType: "txt")
+        #elseif os(OSX)
+        let currentDirectoryURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
+        let bundleURL = URL(fileURLWithPath: "CredBundle.bundle", relativeTo: currentDirectoryURL)
+        let bundle = Bundle(url: bundleURL)
+        path = bundle?.path(forResource: fileName, ofType: "txt")
+        #else
+             println("OMG, it's that mythical new Apple product!!!")
+        #endif
+        
+        if path != ""
         {
             do {
                 var pro = [String: String]()
