@@ -14,7 +14,7 @@ public class CredentialsInfo {
     var secret_signing_key = ""
     var secret_crypto_access_key = ""
     var host = ""
-    init(access_key_id: String, secret_signing_key: String, secret_crypto_access_key: String, host: String) {
+    public init(access_key_id: String, secret_signing_key: String, secret_crypto_access_key: String, host: String) {
         self.access_key_id = access_key_id
         self.secret_signing_key = secret_signing_key
         self.secret_crypto_access_key = secret_crypto_access_key

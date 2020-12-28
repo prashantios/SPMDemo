@@ -15,7 +15,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/PerfectlySoft/Perfect-INIParser.git", from: "4.0.0"),
+        .package(url: "https://github.com/PerfectlySoft/Perfect-INIParser.git", from: "3.0.0"),
         .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", from: "1.1.171"),
         .package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git", from: "5.0.0"),
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "4.0.0"),
